@@ -9,11 +9,14 @@ import (
 	"task/store"
 )
 
-type AccountsHandler struct {
+type AccountHandler struct {
 	// TODO: Add dependencies
 }
 
-func (h *AccountsHandler) ServeHTTP(ctx context.Context, accountID uint64) error {
+func (h *AccountHandler) ServeHTTP(ctx context.Context, accountID uint64) error {
+	// In the real-world application we will call ctx.UserValue(key)
+	// to retrieve URL parameter :account_id from the *fasthttp.RequestCtx
+
 	accounts, err := h.AccountsStore.FindOne(ctx, store.Account{
 		ID: accountID,
 	})
