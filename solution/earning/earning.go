@@ -21,6 +21,7 @@ func (s *AccountsStore) FindOne(ctx context.Context, args store.Account) (store.
 	}
 
 	if reward, ok := rewards[account.Asset]; ok {
+		// Apply bitwise AND operation to account tags
 		if account.Tags&store.AccountTagEarn != 0 {
 			account.Balance = account.Balance + reward
 		}
